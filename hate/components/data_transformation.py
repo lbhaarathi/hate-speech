@@ -24,8 +24,13 @@ class DataTransformation:
         try:
             logging.info("Entered into the imbalance_data_cleaning function")
             imbalance_data=pd.read_csv(self.data_ingestion_artifacts.imbalance_data_file_path)
-            imbalance_data.drop(self.data_transformation_config.ID,axis=self.data_transformation_config.AXIS , 
-            inplace = self.data_transformation_config.INPLACE)
+            imbalance_data.drop(self.data_transformation_config.ID,
+                                axis=self.data_transformation_config.AXIS , 
+                                inplace = self.data_transformation_config.INPLACE)
+            # Rename column Comment --> tweet   and Hateful --> class
+            imbalance_data.rename(self.data_transformation_config.RENAME_COLUMNS,
+                                  inplace=self.data_transformation_config.INPLACE)
+            
             logging.info(f"Exited the imbalance data_cleaning function and returned imbalance data {imbalance_data}")
             return imbalance_data 
         except Exception as e:
@@ -40,10 +45,10 @@ class DataTransformation:
             raw_data.drop(self.data_transformation_config.DROP_COLUMNS,axis = self.data_transformation_config.AXIS,
             inplace = self.data_transformation_config.INPLACE)
 
-            raw_data[raw_data[self.data_transformation_config.CLASS]==0][self.data_transformation_config.CLASS]=1
+            #raw_data[raw_data[self.data_transformation_config.CLASS]==0][self.data_transformation_config.CLASS]=1
             
             # replace the value of 0 to 1
-            raw_data[self.data_transformation_config.CLASS].replace({0:1},inplace=True)
+            #raw_data[self.data_transformation_config.CLASS].replace({0:1},inplace=True)
 
             # Let's replace the value of 2 to 0.
             raw_data[self.data_transformation_config.CLASS].replace({2:0}, inplace = True)

@@ -7,7 +7,7 @@ from datetime import datetime
 # Common constants
 TIMESTAMP: str = datetime.now().strftime("%m_%d_%Y_%H_%M_%S")
 ARTIFACTS_DIR = os.path.join("artifacts", TIMESTAMP)
-BUCKET_NAME = 'hate-speech'
+BUCKET_NAME = 'hatespeech1'
 ZIP_FILE_NAME = 'dataset.zip'
 LABEL = 'label'
 TWEET = 'tweet'
@@ -16,6 +16,7 @@ APP_HOST = "0.0.0.0"
 APP_PORT = 8080
 
 # Data ingestion constants
+DATASET_DIR = "dataset"
 DATA_INGESTION_ARTIFACTS_DIR = "DataIngestionArtifacts"
 DATA_INGESTION_IMBALANCE_DATA_DIR = "imbalanced_data.csv"
 DATA_INGESTION_RAW_DATA_DIR = "raw_data.csv"
@@ -24,10 +25,11 @@ DATA_INGESTION_RAW_DATA_DIR = "raw_data.csv"
 DATA_TRANSFORMATION_ARTIFACTS_DIR = 'DataTransformationArtifacts'
 TRANSFORMED_FILE_NAME = "final.csv"
 DATA_DIR = "data"
-ID = 'id'
+ID = 'Platform'
 AXIS = 1
 INPLACE = True
 DROP_COLUMNS = ['Unnamed: 0','count','hate_speech','offensive_language','neither']
+RENAME_COLUMNS = {"Comment":"tweet", "Hateful":"label"}
 CLASS = 'class'
 
 
