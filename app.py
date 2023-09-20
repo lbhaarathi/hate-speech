@@ -8,7 +8,7 @@ from fastapi.responses import Response
 from hate.pipeline.prediction_pipeline import PredictionPipeline
 from hate.exception import CustomException
 from hate.constants import *
-
+# checked
 
 text:str = "What is machine learing?"
 
